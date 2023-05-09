@@ -86,11 +86,19 @@ const appendButton = (label = "No label") => {
 
 const appendRadio = (label = "No label") => {
     let cont = document.createElement('div')
+    let elCont = document.createElement('div')
     let el = document.createElement('input')
     let elLabel = document.createElement('label')
+    let remButCont = document.createElement('div')
+    let remBut = document.createElement('button')
 
-    cont.setAttribute('class', 'form-check')
+    cont.setAttribute('id', 'radio')
+    cont.setAttribute('class', 'form-check row radio m-0')
+    cont.addEventListener('mouseenter', showRemoveButton)
+    cont.addEventListener('mouseleave', showRemoveButton)
 
+    elCont.setAttribute('class', 'pe-1 col-6 h-100')
+    
     el.setAttribute('type', 'radio')
     el.setAttribute('class', 'form-check-input')
     el.setAttribute('id', 'radioId')
@@ -100,29 +108,64 @@ const appendRadio = (label = "No label") => {
     elLabel.setAttribute('for', 'radioId')
     elLabel.textContent = label
 
+    remButCont.setAttribute('class', 'd-flex justify-content-center col-1')
+
+    remBut.setAttribute('id', 'test')
+    remBut.setAttribute('type', 'text')
+    remBut.setAttribute('class', 'btn btn-primary mt-2 d-none')
+    remBut.textContent = "X"
+    remBut.addEventListener('click', function() {
+        removeFunc('radio')
+    })
+
     document.querySelector('#display').append(cont)
-    cont.appendChild(el)
-    cont.appendChild(elLabel)
+    cont.appendChild(elCont)
+    cont.appendChild(remButCont)
+    elCont.appendChild(el)
+    elCont.appendChild(elLabel)
+    remButCont.appendChild(remBut)
 }
 
 const appendCheckbox = (label = "No label") => {
     let cont = document.createElement('div')
+    let elCont = document.createElement('div')
     let el = document.createElement('input')
     let elLabel = document.createElement('label')
+    let remButCont = document.createElement('div')
+    let remBut = document.createElement('button')
 
-    cont.setAttribute('class', 'form-check')
+    cont.setAttribute('id', 'checkbox')
+    cont.setAttribute('class', 'form-check row checbox m-0')
+    cont.addEventListener('mouseenter', showRemoveButton)
+    cont.addEventListener('mouseleave', showRemoveButton)
+
+    elCont.setAttribute('class', 'pe-1 col-6 h-100')
 
     el.setAttribute('type', 'checkbox')
     el.setAttribute('class', 'form-check-input')
     el.setAttribute('id', 'boxId')
+    el.setAttribute('name', 'boxGroup')
 
     elLabel.setAttribute('class', 'form-check-label')
     elLabel.setAttribute('for', 'boxId')
     elLabel.textContent = label
 
+    remButCont.setAttribute('class', 'd-flex justify-content-center col-1')
+
+    remBut.setAttribute('id', 'test')
+    remBut.setAttribute('type', 'text')
+    remBut.setAttribute('class', 'btn btn-primary mt-2 d-none')
+    remBut.textContent = "X"
+    remBut.addEventListener('click', function() {
+        removeFunc('checkbox')
+    })
+
     document.querySelector('#display').append(cont)
-    cont.appendChild(el)
-    cont.appendChild(elLabel)
+    cont.appendChild(elCont)
+    cont.appendChild(remButCont)
+    elCont.appendChild(el)
+    elCont.appendChild(elLabel)
+    remButCont.appendChild(remBut)
 }
 
 const showRemoveButton = () => {
