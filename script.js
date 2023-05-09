@@ -38,7 +38,9 @@ const appendText = (label = "No label") => {
     remBut.setAttribute('type', 'text')
     remBut.setAttribute('class', 'btn btn-primary mt-2 d-none')
     remBut.textContent = "X"
-    remBut.addEventListener('click', removeFunc('.text'))
+    remBut.addEventListener('click', function() {
+        removeFunc('text')
+    })
 
     document.querySelector('#display').append(cont)
     cont.appendChild(elCont)
@@ -54,8 +56,8 @@ const appendButton = (label = "No label") => {
     let remButCont = document.createElement('div')
     let remBut = document.createElement('button')
 
-    cont.setAttribute('id', type)
-    cont.setAttribute('class', 'row')
+    cont.setAttribute('id', 'button')
+    cont.setAttribute('class', 'row button')
     cont.addEventListener('mouseenter', showRemoveButton)
     cont.addEventListener('mouseleave', showRemoveButton)
 
@@ -71,7 +73,9 @@ const appendButton = (label = "No label") => {
     remBut.setAttribute('type', 'text')
     remBut.setAttribute('class', 'btn btn-primary mt-2 d-none')
     remBut.textContent = "X"
-    remBut.addEventListener('click', removeFunc('.button'))
+    remBut.addEventListener('click', function() {
+        removeFunc('button')
+    })
 
     document.querySelector('#display').append(cont)
     cont.appendChild(elCont)
@@ -127,6 +131,6 @@ const showRemoveButton = () => {
 }
 
 function removeFunc(val) {
-    let jeff = document.querySelector(val)
+    let jeff = document.querySelector('#'+val)
     jeff.remove()
 }
