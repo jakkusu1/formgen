@@ -15,23 +15,69 @@ const insert = () => {
 }
 
 const appendText = (label = "No label") => {
+    let cont = document.createElement('div')
+    let elCont = document.createElement('div')
     let el = document.createElement('input')
+    let remButCont = document.createElement('div')
+    let remBut = document.createElement('button')
+
+    cont.setAttribute('id', 'text')
+    cont.setAttribute('class', 'row text')
+    cont.addEventListener('mouseenter', showRemoveButton)
+    cont.addEventListener('mouseleave', showRemoveButton)
+
+    elCont.setAttribute('class', 'pe-1 col-11')
 
     el.setAttribute('type', 'text')
     el.setAttribute('class', 'form-control mt-2')
     el.setAttribute('placeholder', label)
 
-    document.querySelector('#display').append(el)
+    remButCont.setAttribute('class', 'd-flex justify-content-center col-1')
+
+    remBut.setAttribute('id', 'test')
+    remBut.setAttribute('type', 'text')
+    remBut.setAttribute('class', 'btn btn-primary mt-2 d-none')
+    remBut.textContent = "X"
+    remBut.addEventListener('click', removeFunc('.text'))
+
+    document.querySelector('#display').append(cont)
+    cont.appendChild(elCont)
+    cont.appendChild(remButCont)
+    elCont.appendChild(el)
+    remButCont.appendChild(remBut)
 }
 
 const appendButton = (label = "No label") => {
+    let cont = document.createElement('div')
+    let elCont = document.createElement('div')
     let el = document.createElement('button')
+    let remButCont = document.createElement('div')
+    let remBut = document.createElement('button')
+
+    cont.setAttribute('id', type)
+    cont.setAttribute('class', 'row')
+    cont.addEventListener('mouseenter', showRemoveButton)
+    cont.addEventListener('mouseleave', showRemoveButton)
+
+    elCont.setAttribute('class', 'pe-1 col-11')
 
     el.setAttribute('type', 'text')
-    el.setAttribute('class', 'btn btn-primary mt-2')
+    el.setAttribute('class', 'btn btn-primary mt-2 w-100')
     el.textContent = label
 
-    document.querySelector('#display').append(el)
+    remButCont.setAttribute('class', 'd-flex justify-content-center col-1')
+
+    remBut.setAttribute('id', 'test')
+    remBut.setAttribute('type', 'text')
+    remBut.setAttribute('class', 'btn btn-primary mt-2 d-none')
+    remBut.textContent = "X"
+    remBut.addEventListener('click', removeFunc('.button'))
+
+    document.querySelector('#display').append(cont)
+    cont.appendChild(elCont)
+    cont.appendChild(remButCont)
+    elCont.appendChild(el)
+    remButCont.appendChild(remBut)
 }
 
 const appendRadio = (label = "No label") => {
@@ -73,4 +119,14 @@ const appendCheckbox = (label = "No label") => {
     document.querySelector('#display').append(cont)
     cont.appendChild(el)
     cont.appendChild(elLabel)
+}
+
+const showRemoveButton = () => {
+    let buttonEl = document.querySelector('#test')
+    buttonEl.classList.toggle("d-none") 
+}
+
+function removeFunc(val) {
+    let jeff = document.querySelector(val)
+    jeff.remove()
 }
